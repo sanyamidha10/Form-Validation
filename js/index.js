@@ -13,5 +13,8 @@ form.addEventListener('submit', (event)=>{
 
 // validate function
 const validate = () =>{
-    
+    const username = username.value.trim;
+    const email = email.value.trim;
+    const password = password.value.trim;
+    const cpassword = cpassword.value.trim;
 }
