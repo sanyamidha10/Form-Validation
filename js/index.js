@@ -17,4 +17,14 @@ const validate = () =>{
     const email = email.value.trim;
     const password = password.value.trim;
     const cpassword = cpassword.value.trim;
+
+    // USERNAME VALIDATION
+    if(username === ""){
+        setErrorMsg(username, 'username cannot be blank');
+    }
+    else if(username.length <=2){
+        setErrorMsg(username, 'username must be of minimum 3 characters');
+    }else{
+        setSuccessMsg(username);
+    }
 }
