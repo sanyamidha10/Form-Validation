@@ -12,19 +12,30 @@ form.addEventListener('submit', (event)=>{
 })
 
 // validate function
-const validate = () =>{
-    const username = username.value.trim;
-    const email = email.value.trim;
-    const password = password.value.trim;
-    const cpassword = cpassword.value.trim;
+const validate = (Val) =>{
+    const usernameVal = username.value.trim;
+    const emailVal = email.value.trim;
+    const passwordVal = password.value.trim;
+    const cpasswordVal = cpassword.value.trim;
 
     // USERNAME VALIDATION
-    if(username === ""){
+    if(usernameVal === ""){
         setErrorMsg(username, 'username cannot be blank');
     }
-    else if(username.length <=2){
+    else if(usernameVal.length <=2){
         setErrorMsg(username, 'username must be of minimum 3 characters');
     }else{
         setSuccessMsg(username);
+    }
+
+    // EMAIL VALIDATION
+    if(emailVal === ""){
+        setErrorMsg(email, 'email cannot be blank');
+    }
+    else if (!isEmail(emailVal)){
+        setErrorMsg(emailVal, 'email min 3 char');
+    }
+    else{
+        setSuccessMsg(email);
     }
 }
