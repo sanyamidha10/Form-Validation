@@ -11,6 +11,10 @@ form.addEventListener('submit', (event)=>{
     validate();
 })
 
+const isEmail()={
+    
+}
+
 // validate function
 const validate = (Val) =>{
     const usernameVal = username.value.trim;
