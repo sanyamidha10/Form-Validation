@@ -6,21 +6,30 @@ const cpassword = document.getElementById('cpassword');
 
 
 // add event
-form.addEventListener('submit', (event)=>{
+form.addEventListener('submit', (event) =>{
     event.preventDefault();
     validate();
 })
 
-const isEmail()={
-    
+const isEmail = (emailVal) => {
+    var atSymbol = emailVal.indexOf("@");
+    if(atSymbol < 1) return false;
+
+    var dot = emailVal.lastIndexOf(".");
+    if(dot <= atSymbol + 2) return false;
+
+    if (dot === emailVal.length - 1) return false;
+
+    return true;
+
 }
 
 // validate function
-const validate = (Val) =>{
-    const usernameVal = username.value.trim;
-    const emailVal = email.value.trim;
-    const passwordVal = password.value.trim;
-    const cpasswordVal = cpassword.value.trim;
+const validate = () =>{
+    const usernameVal = username.value.trim();
+    const emailVal = email.value.trim();
+    const passwordVal = password.value.trim();
+    const cpasswordVal = cpassword.value.trim();
 
     // USERNAME VALIDATION
     if(usernameVal === ""){
@@ -37,9 +46,23 @@ const validate = (Val) =>{
         setErrorMsg(email, 'email cannot be blank');
     }
     else if (!isEmail(emailVal)){
-        setErrorMsg(emailVal, 'email min 3 char');
+        setErrorMsg(emailVal, 'Not a valid Email');
     }
     else{
         setSuccessMsg(email);
     }
+}
+
+
+
+function setErrorMsg(input, errormsgs){
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small');
+    formControl.className = "form-control error";
+    small.innerText = errormsgs;
+}
+
+function setSuccessMsg(input){
+    const formControl = input.parentElement;
+    formControl.className = "form-control success";
 }
