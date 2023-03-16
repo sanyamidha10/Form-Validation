@@ -1,6 +1,7 @@
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
+const phone = document.getElementById('phone')
 const password = document.getElementById('password');
 const cpassword = document.getElementById('cpassword');
 
@@ -28,22 +29,23 @@ const isEmail = (emailVal) => {
 const validate = () =>{
     const usernameVal = username.value.trim();
     const emailVal = email.value.trim();
+    const phoneVal = phone.value.trim();
     const passwordVal = password.value.trim();
     const cpasswordVal = cpassword.value.trim();
 
     // USERNAME VALIDATION
     if(usernameVal === ""){
-        setErrorMsg(username, 'username cannot be blank');
+        setErrorMsg(username, 'Username cannot be blank');
     }
     else if(usernameVal.length <=2){
-        setErrorMsg(username, 'username must be of minimum 3 characters');
+        setErrorMsg(username, 'Username must be of minimum 3 characters');
     }else{
         setSuccessMsg(username);
     }
 
     // EMAIL VALIDATION
     if(emailVal === ""){
-        setErrorMsg(email, 'email cannot be blank');
+        setErrorMsg(email, 'Email cannot be blank');
     }
     else if (!isEmail(emailVal)){
         setErrorMsg(emailVal, 'Not a valid Email');
@@ -51,6 +53,18 @@ const validate = () =>{
     else{
         setSuccessMsg(email);
     }
+
+    // PHONE VALIDATION
+    if(phoneVal === ""){
+        setErrorMsg(phone, 'Phone number cannot be blank');
+    }
+    else if (phoneVal.length != 10){
+        setErrorMsg(phone, 'Not a valid Phone number');
+    }
+    else{
+        setSuccessMsg(phone);
+    }
+
 }
 
 
