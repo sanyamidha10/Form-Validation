@@ -48,7 +48,7 @@ const validate = () =>{
         setErrorMsg(email, 'Email cannot be blank');
     }
     else if (!isEmail(emailVal)){
-        setErrorMsg(emailVal, 'Not a valid Email');
+        setErrorMsg(email, 'Not a valid Email');
     }
     else{
         setSuccessMsg(email);
@@ -64,6 +64,29 @@ const validate = () =>{
     else{
         setSuccessMsg(phone);
     }
+
+    // PASSWORD VALIDATION
+    if(passwordVal === ""){
+        setErrorMsg(password, 'Passeord cannot be blank');
+    }
+    else if (passwordVal.length <= 5){
+        setErrorMsg(password, 'Minimum 6 characters');
+    }
+    else{
+        setSuccessMsg(password);
+    }
+
+    // CONFIRM PASSWORD VALIDATION
+    if(cpasswordVal === ""){
+        setErrorMsg(cpassword, 'Confirm Passeord cannot be blank');
+    }
+    else if (cpasswordVal != passwordVal){
+        setErrorMsg(cpassword, 'Password and Confirm Password should be same');
+    }
+    else{
+        setSuccessMsg(cpassword);
+    }
+
 
 }
 
