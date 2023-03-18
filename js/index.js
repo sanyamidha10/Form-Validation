@@ -25,6 +25,11 @@ const isEmail = (emailVal) => {
 
 }
 
+// for final data validation
+const successMsg = () =>{
+    
+}
+
 // validate function
 const validate = () =>{
     const usernameVal = username.value.trim();
@@ -78,7 +83,10 @@ const validate = () =>{
 
     // CONFIRM PASSWORD VALIDATION
     if(cpasswordVal === ""){
-        setErrorMsg(cpassword, 'Confirm Passeord cannot be blank');
+        setErrorMsg(cpassword, 'Confirm Password cannot be blank');
+    }
+    else if (cpasswordVal.length <= 5){
+        setErrorMsg(cpassword, 'Minimum 6 characters');
     }
     else if (cpasswordVal != passwordVal){
         setErrorMsg(cpassword, 'Password and Confirm Password should be same');
@@ -87,6 +95,7 @@ const validate = () =>{
         setSuccessMsg(cpassword);
     }
 
+    setSuccessMsg();
 
 }
 
