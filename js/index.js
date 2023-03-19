@@ -25,9 +25,28 @@ const isEmail = (emailVal) => {
 
 }
 
+const sendData = (usernameVal ,sRate, count) =>{
+    if(sRate === count){
+        alert("Thank you for registering with us!")
+        // swal("Welcome! "+usernameVal, "Registration successful", "success");
+        location.href = `success.html?username=${usernameVal}`
+    }
+}
+
 // for final data validation
-const successMsg = () =>{
-    
+const successMsg = (usernameVal) =>{
+    let formCon = document.getElementsByClassName('form-control');
+    var count = formCon.length - 1;
+    for(var i=0; i<formCon.length; i++){
+        if(formCon[i].className === "form-control success"){
+            var sRate = 0+i;
+            console.log(sRate);
+            sendData(usernameVal ,sRate, count);
+        }
+        else{
+            return false;
+        }
+    }
 }
 
 // validate function
@@ -95,7 +114,7 @@ const validate = () =>{
         setSuccessMsg(cpassword);
     }
 
-    setSuccessMsg();
+    successMsg(usernameVal);
 
 }
 
